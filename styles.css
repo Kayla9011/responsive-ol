@@ -25,7 +25,7 @@ ol {
   list-style: none;
   padding: 0 1rem;
   /* top/bottom right/left */
-  counter-reset: List; /* 初始化计数器 */
+  counter-reset: List; /* 初始化一个名为 List 的计数器，并将其值重置为 0 */
 }
 
 li {
@@ -37,7 +37,7 @@ li {
   --c2: hsl(var(--h), 71%, var(--l2));
 
   position: relative;
-  counter-increment: list; /* li每出现一次，计数器递增1 */
+  counter-increment: list; /* 每当遇到一个 <li> 元素，计数器 List 的值会增加 1 */
   max-width: 45rem;
   margin: 2rem auto; /* 一个值是上下，第二个值是左右，设auto会居中 */
   padding: 2rem 1rem 1rem; /* 值分别是上，左右，下 */
@@ -45,4 +45,58 @@ li {
   overflow: hidden;
   background-color: #fff;
   box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
+}
+
+li::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--c1) var(--stop),
+    var(--c2) var(--stop)
+  );
+}
+
+h3 {
+  display: flex;
+  align-items: baseline;
+  margin: 0 0 1rem;
+  color: rgb(70, 70, 70);
+}
+
+h3::before {
+  content: counter(list); /* 在每个 <h3> 元素的前面，显示当前计数器 List 的值 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  
+  padding: 1rem;
+  border-radius: 50%; /* 形成一个圆 */
+  background-color: var(--c1);
+  color: white;
+}
+
+@media (min-width: 40em) {
+  li {
+    margin: 3rem auto;
+    padding: 3rem 2rem 2rem;
+  }
+
+  h3 {
+    font-size: 2.25rem;
+    margin: 0 0 2rem;
+  }
+
+  h3::before {
+    margin-right: 1.5rem;
+  }
 }
