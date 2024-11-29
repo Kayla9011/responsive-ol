@@ -26,3 +26,7 @@ ol {
   /* top/bottom right/left */
   counter-reset: List;
 }
+
+li {
+  --stop: calc(100% / var(--length) * var(--i));
+}
