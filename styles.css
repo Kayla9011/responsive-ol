@@ -17,24 +17,12 @@ body {
 
 p {
   line-height: 1.6;
+  /* font-size 的 1.6倍 */
 }
 
 ol {
   list-style: none;
   padding: 0 1rem;
-}
-
-h3 {
-  font-size: larger;
-  font-weight: bold;
-}
-
-div {
-  max-width: 50%;
-  height: 200px;
-  margin: 20px auto;
-  padding: 20px;
-  box-shadow: inset;
-  background-color: white;
-  border: 1px solid black;
+  /* top/bottom right/left */
+  counter-reset: List;
 }
