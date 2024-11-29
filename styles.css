@@ -16,6 +16,7 @@ body {
 }
 
 p {
+  margin: 0;
   line-height: 1.6;
   /* font-size 的 1.6倍 */
 }
@@ -24,9 +25,18 @@ ol {
   list-style: none;
   padding: 0 1rem;
   /* top/bottom right/left */
-  counter-reset: List;
+  counter-reset: List; /* 初始化计数器 */
 }
 
 li {
   --stop: calc(100% / var(--length) * var(--i));
+  --l: 62%;
+  --l2: 88%;
+  --h: calc((var(--i) - 1) * (180 / var(--length)));
+  --c1: hsl(var(--h), 71%, var(--l));
+  --c2: hsl(var(--h), 71%, var(--l2));
+
+  position: relative;
+  counter-increment: list; /* li每出现一次，计数器递增1 */
+  max-width: 45rem;
 }
